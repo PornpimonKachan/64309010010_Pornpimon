@@ -25,4 +25,4 @@ let obj ={
 
 console.log(obj.firstName+obj.lastName); //str in obj
 console.log(obj.address.streetAddress); //obj in obj
-console.log(obj.phoneNumbers[1].number);
+console.log(obj.phoneNumbers[1].number); //
