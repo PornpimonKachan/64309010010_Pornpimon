@@ -68,24 +68,39 @@
                     <input type="number"min="0" max="10"class ="form-control"></input>
                 </div>
             </div>
-        </form>
+        <div class="row">
+            <div class="col">
+                <input class= "btn btn-primary" type="button" value="AddMovie">
+        </div>
     </div>
+        </form>
+    </body>
+    </div>
+    <script>
+        let obj = {
+            "movieName": document.forms['myForm']['movieName'].value,
+            "movieLength":document.forms['myForm']['movieLength'].value, 
+            "director":document.forms['myForm']['director'].value, 
+            "category":document.forms['myForm']['ategory'].value, 
+            "picture":document.forms['myForm']['picture'].value,
+            "trailer":document.forms['myForm']['trailer'].value, 
+            "review": {
+                "review":document.forms['myForm']['review'].value, 
+                "score": {
+                    "screenPlay":document.forms['myFoem']['screenPlay'].value, 
+                    "playing":document.forms['myFoem']['playing'].value, 
+                    "music":document.forms['myFoem']['music'],
+                    "actorSkills":document.forms['myFoem']['actorSkill'],
+                    "graphics":document.forms['myFoem']['graphics'], 
+                    "average":null 
+                }
+            }
+        }
+        </script>
 
-    <!-- Optional JavaScript; choose one of the two! -->
+        let obj ={}
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-        crossorigin="anonymous"></script>
+    
 
 </body>
 
