@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Form</title>
+</head>
+
+<body>
+    <div class="container">
+        <form action="" method="post" id="myForm">
+            <div class="row">
+                <div class="col-8">
+                    <label for="" class="form-label">ชื่อเรื่อง</label>
+                    <input type="text" name="" class="form-control" id="Title">
+                </div>
+                <div class="col-4">
+                    <label for="" class="form-label">หมวดหมู่</label>
+                    <input type="number" name="" class="form-control" id="group">
+                </div>
+
+                <div class="col-6">
+                    <label for="" class="form-label">เรื่องย่อ</label>
+                    <input type="text" name="" class="form-control" id="Recapitulation">
+                </div>
+                <div class="col-6">
+                    <label for="" class="form-label">รูป</label>
+                    <input type="text" name="" class="form-control" id="poster">
+                </div>
+
+                <div class="col-6">
+                    <label for="" class="form-label">ผู้กำกับ</label>
+                    <input type="text" name="" class="form-control" id="director">
+                </div>
+                <div class="col-6">
+                    <label for="" class="form-label">วันที่ฉาย</label>
+                    <input type="text" name="" class="form-control" id="date">
+                </div>
+            </div>
+        <div class="row">
+            <div class="col">
+                <input class= "btn btn-primary" type="button" value="addmovie" onclick="addmovie()">
+        </div>
+    </div>
+        </form>
+    </body>
+    </div>
+    <script>
+        function addmovie(){
+        let obj = {
+            "id": null,
+            "movieName": document.forms['myForm']['Title'].value,
+            "movieLength":document.forms['myForm']['group'].value, 
+            "director":document.forms['myForm']['Recapitulation'].value, 
+            "category":document.forms['myForm']['poster'].value, 
+            "picture":document.forms['myForm']['director'].value,
+            "trailer":document.forms['myForm']['date'].value, 
+            
+        }
+        console.log(obj);
+        let text =JSON.stringify(obj);
+
+        console.log("Text",text);
+
+        let xhttp = new XMLHttpRequest();
+        xhttp.open("POST","http://localhost:3000/NF");
+        xhttp.setRequestHeader("Content-Type","application/json");
+        xhttp.send(text);
+
+    }
+
+        </script>
+
+
+    
+
+</body>
+
+</html>

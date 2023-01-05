@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <style> 
+    .btn {
+      margin: 50px 20px 20px 120px;
+      background-color: #f7ab07;
+      color: #060706;
+      padding: 10px 200px;
+
+    }
+
+    .th {
+      background-color: #e5e908;
+      color: #0c0c0a;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .tr {
+      background-color: #dff871;
+      font-size: 20px;
+      text-align: center;
+
+    }
+  </style>
+
+  <title></title>
+</head>
+
+<body style="background-color:#d3f8c2;" onload="getAjex()">
+  <div class="container">
+    <button class="btn" onclick="prev()">ก่อนหน้า</button>
+    <button class="btn" onclick="next()">ถัดไป</button>
+  </div>
+  <div class="container" id="display"></div>
+
+  <script>
+    let xhttp = new XMLHttpRequest();
+    let i = 0;
+
+    function getAjex() {
+      xhttp.open("GET", 'http://localhost:3000/NF');
+      xhttp.send();
+      xhttp.onload = function () {
+        let obj = JSON.parse(this.responseText);
+        let temp = '';
+        test = obj.length
+        temp +=
+          '<thead class="th">' +
+          '<th>ID</th>' +
+          '<th>รูป</> ' +
+          '<th>ชื่อภาพยนต์</th>' +
+          '<th>หมวดหมู่</th>' +
+          '<th>เรื่องย่อ</th>' +
+          '<th>ผู้กำกับ</th>' +
+          '<th>วันที่ฉาย</th>' +
+        
+          '</thead > ' +
+          '<tr class="tr">' + '<td>' + obj[i].id + '</td>' +
+          '<td>' + '<img src="img/' + obj[i].poster + '" width="200px"></td>' +
+          '<td>' + obj[i].Title + '</td>' + '<td>' + obj[i].group + '</td>' +
+          '<td>' + obj[i].Recapitulation + '</td>' + '<td>' + obj[i].director + '</td>' +
+          '<td>' + obj[i].date + '</td>'
+          '</tr>'
+        document.getElementById('display').innerHTML = '<table class="table table-bordered">' + temp + '</table>'
+      }
+    }
+
+    function next() {
+      i++;
+      if (i > test - 1) {
+        i = 0;
+      }
+      getAjex();
+    }
+
+    function prev() {
+      i--;
+      if (i < 0) {
+        i = test - 1;
+      }
+      getAjex();
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+  </script>
+
+</body>
+
+</html>
